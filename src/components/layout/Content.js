@@ -1,10 +1,14 @@
-import React from 'react'
-import { Tasks } from '../Tasks'
-import { Sidebar } from './Sidebar'
+import React from "react";
+import { Tasks } from "../Tasks";
+import { Sidebar } from "./Sidebar";
 
-export const Content = () =>(
-    <section>
-        <Sidebar/>
-        <Tasks/>
-    </section>
-)
+export const Content = () => (
+  <section>
+    <div className="row">
+      <div className="col-sm-3">
+        <Sidebar />
+      </div>
+    <div className="col-sm-3"> <Tasks /></div>
+    </div>
+  </section>
+);

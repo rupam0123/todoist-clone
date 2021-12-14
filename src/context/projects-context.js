@@ -1,15 +1,15 @@
-import React,{createContext,useContext} from 'react'
-import { useProjects } from '../hooks'
+// import React,{createContext,useContext} from 'react'
+// import { useProjects } from '../hooks'
 
-export const ProjectContext = createContext();
-export const ProjectProvider = ({children})=>{
-    const {projects,setProjects} = useProjects();
+// export const ProjectContext = createContext();
+// export const ProjectProvider = ({children})=>{
+//     const {projects,setProjects} = useProjects();
 
-    return(
-        <ProjectContext.provider value={{projects,setProjects}}>
-            {children}
-        </ProjectContext.provider>
-    )
-}
+//     return(
+//         <ProjectContext.provider value={{projects,setProjects}}>
+//             {children}
+//         </ProjectContext.provider>
+//     )
+// }
 
-export const useProjectsValue=()=> useContext(projectsContext);
+// export const useProjectsValue=()=> useContext(projectsContext);

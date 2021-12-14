@@ -1,15 +1,10 @@
-import React,{createContext,useContext} from 'react'
-import { useProjects } from '../hooks'
+// import React from 'react'
 
-export const selec = createContext();
-export const ProjectProvider = ({children})=>{
-    const {projects,setProjects} = useProjects();
+//   const SelectedProjectProvider= ()=> (
+//       <>
+//       </>
 
-    return(
-        <ProjectContext.provider value={{projects,setProjects}}>
-            {children}
-        </ProjectContext.provider>
-    )
-}
+//   )
+// export default SelectedProjectProvider
 
-export const useProjectsValue=()=> useContext(projectsContext);
+
