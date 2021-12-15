@@ -1,11 +1,12 @@
-import { SET_CALENDER, SET_DATE, SET_SELECTED_PROJECT, SET_SHOW, SET_TASK } from "../actions";
+import { GET_TASK, SET_CALENDER, SET_DATE, SET_SELECTED_PROJECT, SET_SHOW, SET_TASK } from "../actions";
 
 const initialState = {
     task:'',
     show:false,
     calender:false,
     date:'',
-    selectedProjet:'INBOX'
+    selectedProject:'INBOX',
+    getTask:[],
 }
 
 export const addTask=(state=initialState,action)=>{
@@ -34,9 +35,15 @@ export const addTask=(state=initialState,action)=>{
         case SET_SELECTED_PROJECT:{
             return{
                 ...state,
-                selectedProjet:action.payload
+                selectedProject:action.payload
             }
-        }           
+        }
+        case GET_TASK:{
+            return{
+                ...state,
+                getTask:action.payload
+            }
+        }            
         default:
             return state  
     }
