@@ -1,30 +1,28 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useProjects } from '../hooks'
+import React,{useEffe} from 'react'
+import { useSelector,useDispatch } from 'react-redux'
+import { setSelectedProjectId, setShowProjectName, setShowProjectTask } from '../actions';
+import { useProjects } from '../hooks';
+import { IndividualProject } from './IndividualProject';
+
 
 export  const Projects= ()=>{
-    useProjects();
+  useProjects();
     const projects=useSelector((state)=>state.projectData.project)
-    console.log('Project',projects);
+    const dispatch = useDispatch();
+
     return(
         projects &&
     projects.map((project) => (
       <li key={project.projectId}>
-          {project.name}
-        {/* <div
-        //   onClick={() => {
-        //     setActive(project.projectId);
-        //     setSelectedProject(project.projectId);
-        //   }}
-        //   onKeyDown={(e) => {
-        //     if (e.key === 'Enter') {
-        //       setActive(project.projectId);
-        //       setSelectedProject(project.projectId);
-        //     }
-        //   }}
-        >
-          <IndividualProject project={project} />
-        </div> */}
+        <div
+          onClick={() => {
+            // setActive(project.projectId);
+            dispatch(setSelectedProjectId(project.projectId));
+            dispatch(setShowProjectName(project.name))
+            dispatch(setShowProjectTask(true))
+          }}>
+          <IndividualProject projects={project} />
+        </div>
       </li>
     ))
   );

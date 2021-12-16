@@ -1,14 +1,16 @@
 import React from "react";
-import { FaPizzaSlice, FaRegCalendar } from "react-icons/fa";
+import { FaPizzaSlice, FaRegCalendar,FaRegListAlt,FaRegCalendarAlt } from "react-icons/fa";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { setCalender, setShow, setTask } from "../../actions";
+import { setCalender, setShow, setShowProjectList, setTask } from "../../actions";
 import { firebase } from "../../firebase";
 import { TaskDate } from "./TaskDate";
+import { ProjectOverlay } from "../ProjectOverlay";
 
 export const Header = () => {
   const dispatch = useDispatch();
   const addTask = useSelector((state) => state.addTask);
+  const {showProjectList,projectId} = useSelector((state)=>state.projectData)
 
   const handleClick = () => {
     dispatch(setShow(true));
@@ -26,18 +28,23 @@ export const Header = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const setFireBase = firebase.firestore();
-    console.log("run",addTask.task)
     setFireBase.collection("tasks").add({
       task: addTask.task.task,
       date: addTask.date,
+      archived:false,
+      projectId
+      
     });
 
     dispatch(setShow(false));
   };
   const handleCalender = () => {
     dispatch(setCalender(!addTask.calender));
-    console.log(addTask.calender);
+    
   };
+  const handleShowProject=()=>{
+    dispatch(setShowProjectList(!showProjectList))
+  }
 
   return (
     <div
@@ -52,7 +59,7 @@ export const Header = () => {
         <div className="collapse navbar-collapse" id="navbarText">
           <div className="navbar-collapse collapse">
             <ul className="nav navbar-nav navbar-right">
-              <li className="settings__add " onClick={handleClick}>
+              <li className="settings__add " onClick={handleClick} role="button">
                 +
               </li>
               <li className="nav-item px-3">
@@ -80,7 +87,12 @@ export const Header = () => {
             {addTask.calender ? (
               <TaskDate />
             ) : (
-              <FaRegCalendar onClick={() => handleCalender()} />
+              <FaRegCalendarAlt onClick={() => handleCalender()} />
+            )}
+            {showProjectList ? (
+              <ProjectOverlay />
+            ) : (
+              <FaRegListAlt onClick={() => handleShowProject()} />
             )}
           </Modal.Footer>
         </Form>

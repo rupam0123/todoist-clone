@@ -1,9 +1,14 @@
-import { SET_PROJECT, SET_PROJECT_NAME, SHOW_PROJECT } from "../actions";
+import { SET_PROJECT, SET_PROJECT_NAME, SET_SELECTED_PROJECTID_ID, SET_SHOW_CONFIRM, SET_SHOW_PROJECTLIST, SET_SHOW_PROJECT_NAME, SET_SHOW_PROJECT_TASK, SHOW_PROJECT } from "../actions";
 
 const initialState = {
   showProject: false,
   project:[],
-  projectName:''
+  projectName:'',
+  projectId:'',
+  showConfirm:false,
+  showProjectList:false,
+  showProjectTask:false,
+  showProjecteName:''
 };
 
 export const projectData = (state = initialState, action) => {
@@ -22,7 +27,32 @@ export const projectData = (state = initialState, action) => {
         return {
           ...state,
           projectName: action.payload,
-          };    
+          };
+      case SET_SELECTED_PROJECTID_ID:
+        return {
+          ...state,
+          projectId: action.payload,
+        };
+      case SET_SHOW_CONFIRM:
+        return {
+        ...state,
+        showConfirm: action.payload,
+      };
+      case SET_SHOW_PROJECTLIST:
+        return {
+        ...state,
+        showProjectList: action.payload,
+      };
+      case SET_SHOW_PROJECT_TASK:
+        return {
+        ...state,
+        showProjectTask: action.payload,
+      };
+      case SET_SHOW_PROJECT_NAME:
+        return {
+        ...state,
+        showProjecteName: action.payload,
+      };          
     default:
       return state;
   }

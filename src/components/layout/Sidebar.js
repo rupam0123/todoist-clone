@@ -6,14 +6,13 @@ import {
   FaRegCalendar,
 } from "react-icons/fa";
 import { NavLink } from "react-bootstrap";
-import { setSelectedProject, setShowProject } from "../../actions";
+import { setSelectedProject, setShowProject, setShowProjectTask } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { AddProject } from "../AddProject";
 import { Projects } from "../Projects";
 export const Sidebar = () => {
   const dispatch = useDispatch();
   const showProjects = useSelector((state) => state.projectData.showProject);
-  console.log('true or false',showProjects)
 
   return (
     <div className="left-menu-container">
@@ -22,7 +21,7 @@ export const Sidebar = () => {
           <NavLink to="project" activeClassName="current">
             <li
               className="filter"
-              onClick={() => dispatch(setSelectedProject("INBOX"))}
+              onClick={() => {dispatch(setSelectedProject("INBOX"));dispatch(setShowProjectTask(false))}}
             >
               <span className="filter__icon">
                 <FaInbox color="#246fe0" />
@@ -33,7 +32,7 @@ export const Sidebar = () => {
           <NavLink to="today" activeClassName="current">
             <li
               className="filter"
-              onClick={() => dispatch(setSelectedProject("TODAY"))}
+              onClick={() => {dispatch(setSelectedProject("TODAY"));dispatch(setShowProjectTask(false))}}
             >
               <span className="filter__icon">
                 <FaRegCalendar />
@@ -44,7 +43,7 @@ export const Sidebar = () => {
           <NavLink to="upcoming" activeClassName="current">
             <li
               className="filter"
-              onClick={() => dispatch(setSelectedProject("NEXT_7"))}
+              onClick={() => {dispatch(setSelectedProject("NEXT_7"));dispatch(setShowProjectTask(false))}}
             >
               <span className="filter__icon">
                 <FaRegCalendarAlt />
@@ -63,15 +62,12 @@ export const Sidebar = () => {
         >
           <span>
             <FaChevronDown
-              className={!showProjects ? "hidden-projects" : undefined}
             />
           </span>
           <h4>Projects</h4>
         </div>
       </div>
-      <ul >{showProjects && <Projects />}</ul>
-
-      {showProjects && <AddProject />}
+      {showProjects ?<> <Projects /> <AddProject /></>:''}
       <div></div>
       <div></div>
       <div></div>

@@ -1,20 +1,19 @@
 import React from 'react'
+import { FaSpaceShuttle ,FaCheck} from 'react-icons/fa';
 import { firebase } from "../firebase"
 
 export  const Checkbox =({id})=>{
     const archiveTask=()=>{
-        firebase.firebase()
+        firebase.firestore()
         .collection('tasks')
         .doc(id)
         .update({
-          archiveed:true,
+          archived:true,
         }) ;
    };
    return(
-     <div className ="checkbox-holder"
-     data-testid="checkbox-action"
-     onClick={()=> archiveTask()}>
-       <span classsName = "checkbox"/>
+     <div onClick={()=> archiveTask()}>
+       <FaCheck/>
      </div>
    )
 }

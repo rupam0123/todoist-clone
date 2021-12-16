@@ -4,10 +4,12 @@ import { Checkbox } from "./Checkbox";
 import {useSelector,useDispatch} from "react-redux" 
 import { setShow } from "../actions";
 import { hook } from "../hooks";
+import  ShowProjects  from "./ShowProjects";
 
 export const Tasks = () => {
   hook();
   const  task  = useSelector((state)=>state.addTask.getTask)
+  const {showProjectTask} =useSelector((state)=>state.projectData)
   const dispatch= useDispatch();
 
   const handleClick=()=>{
@@ -15,12 +17,9 @@ export const Tasks = () => {
   }
 
 
-  const projectName = "";
-
   return (
     <div>
-      <AddTask />
-      <h2 data-testid="project-name">{projectName}</h2>
+      {!showProjectTask?<><AddTask /> 
       <ul className="task__list" style={{listStyle:"none"}}>
         {task.map((task) => 
         <li key={`${task.id}`}>
@@ -29,6 +28,8 @@ export const Tasks = () => {
       </li>
         )}
       </ul>
+      </>
+      :<ShowProjects/>}
       <li onClick={handleClick}> +{' '}add Task</li>
     </div>
   );

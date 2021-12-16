@@ -2,7 +2,9 @@ import React from "react";
 import { Tasks } from "../Tasks";
 import { Sidebar } from "./Sidebar";
 
-export const Content = () => (
+export const Content = () => {
+  
+  return(
   <section>
     <div className="row">
       <div className="col-sm-3">
@@ -12,3 +14,4 @@ export const Content = () => (
     </div>
   </section>
 );
+}
