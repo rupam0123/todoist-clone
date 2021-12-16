@@ -5,9 +5,13 @@ export const SET_DATE ='SET_DATE'
 export const SET_SELECTED_PROJECT ='SET_SELECTED_PROJECT'
 export const GET_TASK ='GET_TASK'
 export const SHOW_PROJECT ='SHOW_PROJECT'
-export const GET_PROJECT = 'GET_PROJECT'
+export const SET_PROJECT = 'GET_PROJECT'
+export const SET_PROJECT_NAME ='SET_PROJECT_NAME'
 
-export const getProject = (payload)=>({type:GET_PROJECT,payload})
+
+
+export const setProject = (payload)=>({type:SET_PROJECT,payload})
+export const setProjectName=(payload)=>({type:SET_PROJECT_NAME,payload})
 export const setTask =(payload)=>({type:SET_TASK,payload})
 export const getTasks =(payload)=>({type:GET_TASK,payload})
 export const setShow =(payload)=>({type:SET_SHOW,payload})

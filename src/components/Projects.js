@@ -4,7 +4,7 @@ import { useProjects } from '../hooks'
 
 export  const Projects= ()=>{
     useProjects();
-    const projects=useSelector((state)=>state.projectData.getProject)
+    const projects=useSelector((state)=>state.projectData.project)
     console.log('Project',projects);
     return(
         projects &&

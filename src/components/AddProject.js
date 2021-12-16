@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useProjectsValue } from '../context';
 import { firebase } from '../firebase';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch} from 'react-redux';
+import { setProject, setProjectName, setShowProject } from '../actions';
 
 export const AddProject = () => {
   const show=useSelector((state)=>state.projectData.showProject)
-  const [projectName, setProjectName] = useState('');
+  const {project,projectName}=useSelector((state)=>state.projectData)
+  const dispatch = useDispatch();
+  console.log(project)
+  const projectId =new Date().getTime();
 
 //   const { projects, setProjects } = useProjectsValue();
 
@@ -21,9 +25,9 @@ export const AddProject = () => {
         userId: 'zmUMzQzYeMsIMDWtxQVE',
       })
       .then(() => {
-        setProjects([...projects]);
-        setProjectName('');
-        setShow(false);
+        dispatch(setProject([...project]));
+        dispatch(setProjectName(''));
+        dispatch(setShowProject(false));
       });
 
   return (
@@ -32,7 +36,7 @@ export const AddProject = () => {
         <div className="add-project__input" data-testid="add-project-inner">
           <input
             value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
+            onChange={(e) => dispatch(setProjectName(e.target.value))}
             className="add-project__name"
             data-testid="project-name"
             type="text"
@@ -50,9 +54,9 @@ export const AddProject = () => {
             aria-label="Cancel adding project"
             data-testid="hide-project-overlay"
             className="add-project__cancel"
-            onClick={() => setShow(false)}
+            onClick={() => dispatch(setShowProject(false))}
             onKeyDown={(e) => {
-              if (e.key === 'Enter') setShow(false);
+              if (e.key === 'Enter') dispatch(setShowProject(false));
             }}
             role="button"
             tabIndex={0}
@@ -66,9 +70,9 @@ export const AddProject = () => {
         aria-label="Add Project"
         data-testid="add-project-action"
         className="add-project__text"
-        onClick={() => setShow(!show)}
+        onClick={() => dispatch(setShowProject(!show))}
         onKeyDown={(e) => {
-          if (e.key === 'Enter') setShow(!show);
+          if (e.key === 'Enter') dispatch(setShowProject(!show));
         }}
         role="button"
         tabIndex={0}

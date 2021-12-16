@@ -3,7 +3,7 @@ import { firebase } from "../firebase";
 import moment from "moment";
 import { collatedTasksExist } from "../helpers";
 import { useSelector, useDispatch } from "react-redux";
-import { getProject, getTasks, setSelectedProject } from "../actions";
+import {  getTasks, setProject, setSelectedProject } from "../actions";
 
 export const hook = () => {
   const dispatch = useDispatch();
@@ -66,6 +66,7 @@ export const useProjects =()=>{
         .firestore()
         .collection('projects')
         .orderBy('projectId')
+        .where('userId', '==', 'zmUMzQzYeMsIMDWtxQVE')
         .get()
         .then(snapshot=>{
             const allProjects=snapshot.docs.map(project =>({
@@ -74,7 +75,7 @@ export const useProjects =()=>{
             }));
 
             if (JSON.stringify(allProjects) !== JSON.stringify(projects)){
-              dispatch(getProject(allProjects))
+              dispatch(setProject(allProjects))
             }
         })
     },[])
