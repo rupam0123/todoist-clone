@@ -6,7 +6,11 @@ import {
   FaRegCalendar,
 } from "react-icons/fa";
 import { NavLink } from "react-bootstrap";
-import { setSelectedProject, setShowProject, setShowProjectTask } from "../../actions";
+import {
+  setSelectedProject,
+  setShowProject,
+  setShowProjectTask,
+} from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { AddProject } from "../AddProject";
 import { Projects } from "../Projects";
@@ -15,13 +19,19 @@ export const Sidebar = () => {
   const showProjects = useSelector((state) => state.projectData.showProject);
 
   return (
-    <div className="left-menu-container">
+    <div
+      className="left-menu-container"
+      style={{ background: "blanchedalmond" }}
+    >
       <div>
         <ul className="top-filters p-0 m md:m-0" style={{ listStyle: "none" }}>
           <NavLink to="project" activeClassName="current">
             <li
               className="filter"
-              onClick={() => {dispatch(setSelectedProject("INBOX"));dispatch(setShowProjectTask(false))}}
+              onClick={() => {
+                dispatch(setSelectedProject("INBOX"));
+                dispatch(setShowProjectTask(false));
+              }}
             >
               <span className="filter__icon">
                 <FaInbox color="#246fe0" />
@@ -32,7 +42,10 @@ export const Sidebar = () => {
           <NavLink to="today" activeClassName="current">
             <li
               className="filter"
-              onClick={() => {dispatch(setSelectedProject("TODAY"));dispatch(setShowProjectTask(false))}}
+              onClick={() => {
+                dispatch(setSelectedProject("TODAY"));
+                dispatch(setShowProjectTask(false));
+              }}
             >
               <span className="filter__icon">
                 <FaRegCalendar />
@@ -43,7 +56,10 @@ export const Sidebar = () => {
           <NavLink to="upcoming" activeClassName="current">
             <li
               className="filter"
-              onClick={() => {dispatch(setSelectedProject("NEXT_7"));dispatch(setShowProjectTask(false))}}
+              onClick={() => {
+                dispatch(setSelectedProject("NEXT_7"));
+                dispatch(setShowProjectTask(false));
+              }}
             >
               <span className="filter__icon">
                 <FaRegCalendarAlt />
@@ -60,14 +76,20 @@ export const Sidebar = () => {
           role="button"
           tabIndex={0}
         >
-          <span>
-            <FaChevronDown
-            />
+          <span style={{ color: "crimson" }}>
+            <FaChevronDown />
+            Projects
           </span>
-          <h4>Projects</h4>
         </div>
       </div>
-      {showProjects ?<> <Projects /> <AddProject /></>:''}
+      {showProjects ? (
+        <>
+          {" "}
+          <Projects /> <AddProject />
+        </>
+      ) : (
+        ""
+      )}
       <div></div>
       <div></div>
       <div></div>

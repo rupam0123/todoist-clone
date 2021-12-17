@@ -13,10 +13,9 @@ export  const Projects= ()=>{
     return(
         projects &&
     projects.map((project) => (
-      <li key={project.projectId}>
+      <li key={project.projectId} style={{listStyle:"none"}}>
         <div
           onClick={() => {
-            // setActive(project.projectId);
             dispatch(setSelectedProjectId(project.projectId));
             dispatch(setShowProjectName(project.name))
             dispatch(setShowProjectTask(true))

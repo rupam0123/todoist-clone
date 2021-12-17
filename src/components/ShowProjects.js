@@ -1,20 +1,15 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import { toggleTask } from "../actions";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 
 const ShowProjects = () => {
-  const dispatch = useDispatch();
-  const {project,projectId,showProjecteName} = useSelector((state) => state.projectData);
+  const {projectId,showProjecteName} = useSelector((state) => state.projectData);
   const {getTask} = useSelector((state)=>state.addTask)
-
-  
-  
-  const addTaskToggle = useSelector((state) => state.tasks);
   
   return (
     <>
       <div className="col-md-6">
-        <h2 className="my-3 text-center fst-italic">
+        <h2 className="project-head">
           {showProjecteName}
         </h2>
         {getTask.map((i) => (

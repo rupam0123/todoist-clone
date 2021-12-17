@@ -1,13 +1,13 @@
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { Content } from './components/layout/Content';
 import { Header } from './components/layout/Header';
-import { useProjects } from './hooks';
 
- export const App=() =>{
+ export default function App () {
   return(
     
-    <div className="App">
+    <div className="App"> 
       <Header/>
       <Content/>
     </div>

@@ -4,14 +4,12 @@ import PropTypes from "prop-types";
 import { firebase } from "../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setProject,
-  setSelectedProject,
   setShowConfirm,
   setShowProject,
 } from "../actions";
 
 export const IndividualProject = ({ projects }) => {
-  const { project, showConfirm, showProject } = useSelector(
+  const { showConfirm, showProject,projectId } = useSelector(
     (state) => state.projectData
   );
   const dispatch = useDispatch();
@@ -20,15 +18,10 @@ export const IndividualProject = ({ projects }) => {
   };
 
   return (
-    <>
-      <span>{projects.name}</span>
-      <span
-        onClick={() => dispatch(setShowConfirm(!showConfirm))}
-        tabIndex={0}
-        role="button"
-      >
-        {" "}
-        <FaTrashAlt />
+    <div  className="show-mouse">
+      <span role="button">{projects.name}
+        <FaTrashAlt onClick={() => dispatch(setShowConfirm(!showConfirm))}
+        role="button"/>
         {showConfirm && (
           <div>
             <div>
@@ -49,7 +42,7 @@ export const IndividualProject = ({ projects }) => {
           </div>
         )}
       </span>
-    </>
+    </div>
   );
 };
 

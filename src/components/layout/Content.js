@@ -1,4 +1,5 @@
 import React from "react";
+import { AddTask } from "../AddTask";
 import { Tasks } from "../Tasks";
 import { Sidebar } from "./Sidebar";
 
@@ -11,6 +12,7 @@ export const Content = () => {
         <Sidebar />
       </div>
     <div className="col-sm-3"> <Tasks /></div>
+    <AddTask/>
     </div>
   </section>
 );

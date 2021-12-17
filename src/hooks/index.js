@@ -17,7 +17,7 @@ export const hook = () => {
           id: task.id,
           ...task.data(),
         }));
-        dispatch(getTasks(newTasks))
+        dispatch(getTasks(newTasks.filter((data)=>data.archived !== true)))
       });
     } else if (selectedProject === "TODAY") {
       let unsubscribe = firebase.firestore().collection("tasks");
@@ -31,7 +31,7 @@ export const hook = () => {
           getTasks(
             newTasks.filter(
               (data) =>
-                data.date == moment().format("DD/MM/YYYY") || data.date == "" &&
+                data.date == moment().format("DD/MM/YYYY") &&
                 data.archived !== true
             )
           )

@@ -31,15 +31,17 @@ export const AddProject = () => {
   return (
     <div className="add-project" data-testid="add-project">
       {show && (
-        <div className="add-project__input" data-testid="add-project-inner">
+        <div>
           <input
             value={projectName}
             onChange={(e) => dispatch(setProjectName(e.target.value))}
             type="text"
             placeholder="Name your project"
+            style={{background:"azure"}}
           />
           <button
             type="button"
+            style={{background:"cadetblue"}}
             onClick={() => addProject()}
           >
             Add Project
@@ -56,7 +58,7 @@ export const AddProject = () => {
           </span>
         </div>
       )}
-      <span >+</span>
+      {/* <span >+</span>
       <span onClick={() => dispatch(setShowProject(!show))}
         onKeyDown={(e) => {
           if (e.key === 'Enter') dispatch(setShowProject(!show));
@@ -65,7 +67,7 @@ export const AddProject = () => {
         tabIndex={0}
       >
         Add Project
-      </span>
+      </span> */}
     </div>
   );
 };

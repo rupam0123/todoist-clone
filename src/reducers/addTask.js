@@ -1,4 +1,4 @@
-import { GET_TASK, SET_CALENDER, SET_DATE, SET_SELECTED_PROJECT, SET_SHOW, SET_TASK } from "../actions";
+import { GET_TASK, SET_CALENDER, SET_DARKMODE, SET_DATE, SET_SELECTED_PROJECT, SET_SHOW, SET_TASK } from "../actions";
 
 const initialState = {
     task:'',
@@ -7,6 +7,7 @@ const initialState = {
     date:'',
     selectedProject:'INBOX',
     getTask:[],
+    darkmode:false
 }
 
 export const addTask=(state=initialState,action)=>{
@@ -42,6 +43,12 @@ export const addTask=(state=initialState,action)=>{
             return{
                 ...state,
                 getTask:action.payload
+            }
+        }
+        case SET_DARKMODE:{
+            return{
+                ...state,
+                darkmode:action.payload
             }
         }            
         default:

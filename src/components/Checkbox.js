@@ -12,8 +12,6 @@ export  const Checkbox =({id})=>{
         }) ;
    };
    return(
-     <div onClick={()=> archiveTask()}>
-       <FaCheck/>
-     </div>
+       <FaCheck role="button" onClick={()=> archiveTask()}/>
    )
 }
