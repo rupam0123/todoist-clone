@@ -1,5 +1,7 @@
 .App {
   text-align: -webkit-auto;
+  background-color:blanchedalmond;
+  height: 40rem;
 }
 
 .App-logo {
@@ -12,6 +14,7 @@
 
 .App-link {
   color: #61dafb;
+  
 }
 
 
@@ -26,7 +29,7 @@
 }
 .project-head{
   color: dodgerblue;
-  margin-left: 350px;
+  width:60%;
 
 }
 .darkmode{
@@ -43,7 +46,7 @@
   background-color: orangered;
 }
 
-.show-mouse:hover p {
+.show-mouse:hover{
   z-index: 99;
     width: 300px;
     padding: 10px;

@@ -14,6 +14,7 @@ export const SET_SHOW_PROJECTLIST='SET_SHOW_PROJECTLIST'
 export const SET_SHOW_PROJECT_TASK='SET_SHOW_PROJECT_TASK'
 export const SET_SHOW_PROJECT_NAME ='SET_SHOWPROJECT_NAME'
 export const SET_DARKMODE = 'SET_DARKMODE'
+export const SET_ADD_PROJECT_TASK='SET_ADD_PROJECT_TASK'
 
 
 
@@ -32,3 +33,4 @@ export const setShowProjectTask =(payload)=>({type:SET_SHOW_PROJECT_TASK,payload
 export const setShowProjectName =(payload)=>({type:SET_SHOW_PROJECT_NAME,payload})
 export const setShowProject =(payload)=>({type:SHOW_PROJECT,payload})
 export const setDarkmode =(payload)=>({type:SET_DARKMODE,payload})
+export const setAddProjectTask=(payload)=>({type:SET_ADD_PROJECT_TASK,payload})

@@ -1,6 +1,6 @@
 import React,{useEffe} from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-import { setSelectedProjectId, setShowProjectName, setShowProjectTask } from '../actions';
+import { setSelectedProject, setSelectedProjectId, setShowProjectName, setShowProjectTask } from '../actions';
 import { useProjects } from '../hooks';
 import { IndividualProject } from './IndividualProject';
 
@@ -19,8 +19,9 @@ export  const Projects= ()=>{
             dispatch(setSelectedProjectId(project.projectId));
             dispatch(setShowProjectName(project.name))
             dispatch(setShowProjectTask(true))
+            dispatch(setSelectedProject("INBOX"))
           }}>
-          <IndividualProject projects={project} />
+          <IndividualProject projects={project}/>
         </div>
       </li>
     ))

@@ -2,7 +2,7 @@ import {  useEffect } from "react";
 import { firebase } from "../firebase";
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
-import {  getTasks, setProject, setSelectedProject } from "../actions";
+import {  getTasks, setDate, setProject } from "../actions";
 
 export const hook = () => {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ export const hook = () => {
         }));
         dispatch(getTasks(newTasks.filter((data)=>data.archived !== true)))
       });
+      dispatch(setDate(moment().format('DD/MM/YYYY')))
     } else if (selectedProject === "TODAY") {
       let unsubscribe = firebase.firestore().collection("tasks");
 
@@ -37,6 +38,7 @@ export const hook = () => {
           )
         );
       });
+      dispatch(setDate(moment().add(1, 'day').format('DD/MM/YYYY')))
     } else {
       let unsubscribe = firebase.firestore().collection("tasks");
 
@@ -56,6 +58,7 @@ export const hook = () => {
         );
       });
     }
+    dispatch(setDate(moment().add(7, 'days').format('DD/MM/YYYY')))
   }, [selectedProject]);
 }
 

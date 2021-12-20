@@ -8,6 +8,7 @@ import {
 import { NavLink } from "react-bootstrap";
 import {
   setSelectedProject,
+  setSelectedProjectId,
   setShowProject,
   setShowProjectTask,
 } from "../../actions";
@@ -20,8 +21,7 @@ export const Sidebar = () => {
 
   return (
     <div
-      className="left-menu-container"
-      style={{ background: "blanchedalmond" }}
+      style={{ background: "blanchedalmond",marginLeft:'100px'}}
     >
       <div>
         <ul className="top-filters p-0 m md:m-0" style={{ listStyle: "none" }}>
@@ -31,12 +31,10 @@ export const Sidebar = () => {
               onClick={() => {
                 dispatch(setSelectedProject("INBOX"));
                 dispatch(setShowProjectTask(false));
+                dispatch(setSelectedProjectId(""))
               }}
             >
-              <span className="filter__icon">
-                <FaInbox color="#246fe0" />
-              </span>
-              <span className="filter__content">Inbox</span>
+              <span className="show-mouse"><FaInbox color="#246fe0" />Inbox</span>
             </li>
           </NavLink>
           <NavLink to="today" activeClassName="current">
@@ -45,12 +43,10 @@ export const Sidebar = () => {
               onClick={() => {
                 dispatch(setSelectedProject("TODAY"));
                 dispatch(setShowProjectTask(false));
+                dispatch(setSelectedProjectId(""))
               }}
             >
-              <span className="filter__icon">
-                <FaRegCalendar />
-              </span>
-              <span className="filter__content">Today</span>
+              <span className="show-mouse"><FaRegCalendar />Today</span>
             </li>
           </NavLink>
           <NavLink to="upcoming" activeClassName="current">
@@ -59,12 +55,10 @@ export const Sidebar = () => {
               onClick={() => {
                 dispatch(setSelectedProject("NEXT_7"));
                 dispatch(setShowProjectTask(false));
+                dispatch(setSelectedProjectId(""));
               }}
             >
-              <span className="filter__icon">
-                <FaRegCalendarAlt />
-              </span>
-              <span className="filter__content">Next 7 days</span>
+              <span className="show-mouse"><FaRegCalendarAlt />Next 7 days</span>
             </li>
           </NavLink>
         </ul>

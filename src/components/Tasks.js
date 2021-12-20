@@ -17,10 +17,10 @@ export const Tasks = () => {
   };
 
   return (
-    <div>
+    <div style={{marginLeft:'200px'}}>
       {!showProjectTask ? (
         <>
-          <div className="color-code">
+          <div className="color-code" >
             {selectedProject === "INBOX" ? (
               <h3>Inbox</h3>
             ) : selectedProject === "TODAY" ? (
@@ -31,9 +31,9 @@ export const Tasks = () => {
           </div>
           <ul className="task__list" style={{ listStyle: "none" }}>
             {getTask.map((task) => (
-              <li key={`${task.id}`}>
+              <li  key={`${task.id}`}>
                 <Checkbox id={task.id} taskDesc={task.task} />{" "}
-                <span>{task.task}</span>
+                <span >{task.task}</span>
               </li>
             ))}
           </ul>

@@ -9,11 +9,11 @@ const ShowProjects = () => {
   return (
     <>
       <div className="col-md-6">
-        <h2 className="project-head">
+        <h2 className="project-head" >
           {showProjecteName}
         </h2>
         {getTask.map((i) => (
-        ( i.projectId == projectId)? <li>{i.task}</li>:undefined)
+        ( i.projectId == projectId && i.archived !== true)? <li>{i.task}</li>:undefined)
         )}
       </div>
     </>

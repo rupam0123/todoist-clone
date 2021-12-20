@@ -8,10 +8,10 @@ export const Content = () => {
   return(
   <section>
     <div className="row">
-      <div className="col-sm-3">
+      <div className="col-sm-4">
         <Sidebar />
       </div>
-    <div className="col-sm-3"> <Tasks /></div>
+    <div className="col-sm-6"> <Tasks /></div>
     <AddTask/>
     </div>
   </section>
